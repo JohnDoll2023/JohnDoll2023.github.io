@@ -1,7 +1,7 @@
 async function init() {
     try {
         // load csv
-        const data = await d3.csv("charts.csv");
+        const data = await d3.csv("top200_charts_us_ca_mx.csv");
         
         // sanity check data
         console.log("Successfully loaded CSV");
