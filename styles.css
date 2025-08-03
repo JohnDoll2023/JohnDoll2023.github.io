@@ -1,0 +1,23 @@
+/* set checkboxes and bubble labels to have same colors by country */
+
+#us-checkbox {
+    accent-color: rgb(44, 93, 171);
+}
+#mx-checkbox {
+    accent-color: green;
+}
+#ca-checkbox {
+    accent-color: red;
+}
+label:has(#us-checkbox) {
+    color: rgb(44, 93, 171);;
+    font-weight: bold;
+}
+label:has(#mx-checkbox) {
+    color: green;
+    font-weight: bold;
+}
+label:has(#ca-checkbox) {
+    color: red;
+    font-weight: bold;
+}

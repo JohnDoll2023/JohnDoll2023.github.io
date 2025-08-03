@@ -6,11 +6,51 @@
     <script src="https://d3js.org/d3.v7.min.js"></script> <!-- d3 -->
     <script src="https://unpkg.com/topojson-client@3"></script> <!-- topojson -->
     <script src="d3.js"></script>
+    <link rel="stylesheet" href="styles.css">
     <title>Spotify Top 200</title>
 </head>
-<body onload="init()">
+<body onload="init()" style="text-align: center; display: flex; flex-direction: column; align-items: center; font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif">
     <h1>Spotify Top 200</h1>
     <p>The below visualization will allow you to interact with the Spotify Top 200 chart data for the United States, Canada, and Mexico from 2017-2021.
     </p>
+    
+    <!-- 3-way view selector -->
+    <div style="margin: 20px 0;">
+        <div style="display: inline-block; background-color: #f0f0f0; border-radius: 25px; padding: 5px;">
+            <button id="view-overview" class="view-btn active" style="padding: 10px 20px; border: none; border-radius: 20px; margin: 0 2px; cursor: pointer; background-color: steelblue; color: white; font-weight: bold;">
+                Chart Overview
+            </button>
+            <button id="view-artists" class="view-btn" style="padding: 10px 20px; border: none; border-radius: 20px; margin: 0 2px; cursor: pointer; background-color: transparent; color: #333;">
+                Artist Analysis
+            </button>
+            <button id="view-songs" class="view-btn" style="padding: 10px 20px; border: none; border-radius: 20px; margin: 0 2px; cursor: pointer; background-color: transparent; color: #333;">
+                Song Performance
+            </button>
+        </div>
+    </div>
+    
+    <!-- 3 horizontal checkboxes for us, mexico and canada filtering -->
+    <div>
+        <label><input type="checkbox" id="us-checkbox" checked> United States</label>
+        <label><input type="checkbox" id="mx-checkbox"> Mexico</label>
+        <label><input type="checkbox" id="ca-checkbox"> Canada</label>
+    </div>
+    <!-- main chart that can have the one or more of us, canada, mexico, and has a slider for date-->
+    <div>
+        <label for="date-slider">Date:</label>
+        <input type="range" id="date-slider" min="0" max="100" step="1" value="00">
+        <span id="date-value">Jan 1, 2017</span>
+    </div>
+    <!-- and has a slider to fiter for number of top of songs from top 200 for the selected day and countr(ies) -->
+    <div>
+        <label for="top-songs-slider">Top Songs:</label>
+        <input type="range" id="top-songs-slider" min="1" max="200" step="1" value="10">
+        <span id="top-songs-value">10</span>
+    </div>
+    <p><i>Hint: Hover over the data to see more details.</i></p>
+    <!-- dynamic chart title -->
+    <h2 id="chart-title">Select countries and adjust settings to view chart</h2>
+    <!-- chart -->
+    <div id="chart"></div>
 </body>
 </html>
